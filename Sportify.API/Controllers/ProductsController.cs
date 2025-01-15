@@ -127,6 +127,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    //Produktet sipas çmimeve
     [HttpGet("FilterProductByPrice")]
     public async Task<IActionResult> GetProductsByPriceRange(decimal minPrice, decimal maxPrice)
     {
@@ -141,7 +142,6 @@ public class ProductsController : ControllerBase
     }
 
     // Produktet StockQuantity > 10
-
     [HttpGet("WithSufficientStock")]
     public async Task<IActionResult> GetProductsWithSufficientStock()
     {
@@ -182,6 +182,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    // Produktet me vlerësim të lartë
     [HttpGet("HighlyRatedProducts")]
     public async Task<IActionResult> GetHighlyRatedProductsAsync()
     {
@@ -195,6 +196,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    // Produktet me vlerësim të ulët
     [HttpGet("LowestRatedProducts")]
     public async Task<IActionResult> GetLowestRatedProductsAsync()
     {
@@ -208,6 +210,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    // Produktet me numër minimal komentesh
     [HttpGet("Minimum-reviews/{minReviews}")]
     public async Task<IActionResult> GetProductsByMinimumReviewCountAsync(int minReviews)
     {
@@ -221,6 +224,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    //Produktet me vlerësimin mesatar më të lartë, por me numrin minimal të komenteve
     [HttpGet("Top-Rated/{minReviews}")]
     public async Task<IActionResult> GetTopRatedProductsByReviewCountAsync(int minReviews)
     {
@@ -234,6 +238,7 @@ public class ProductsController : ControllerBase
         return Ok(products);
     }
 
+    //Produkte pa komente
     [HttpGet("No-reviews")]
     public async Task<IActionResult> GetProductsWithNoReviewsAsync()
     {

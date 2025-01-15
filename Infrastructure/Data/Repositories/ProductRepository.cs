@@ -39,6 +39,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
+    //Produktet sipas çmimeve
     public async Task<IList<Product>> GetProductsByPriceRangeAsync(decimal minPrice, decimal maxPrice)
     {
         return await _context.Products
@@ -47,9 +48,9 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
+    // Produktet StockQuantity > 10
     public async Task<IList<Product>> GetProductsWithSufficientStockAsync()
     {
-        // Produktet StockQuantity > 10
         return await _context.Products
                               .Where(p => p.StockQuantity > 10)
                               .ToListAsync();
@@ -103,6 +104,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
+    // Metoda me numër minimal komentesh
     public async Task<IList<Product>> GetProductsByMinimumReviewCountAsync(int minReviews)
     {
         return await _context.Products
@@ -110,6 +112,8 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
+
+    //Produktet me vlerësimin mesatar më të lartë, por me numrin minimal të komenteve
     public async Task<IList<Product>> GetTopRatedProductsByReviewCountAsync(int minReviews)
     {
         return await _context.Products
@@ -118,6 +122,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
+    //Produkte pa komente
     public async Task<IList<Product>> GetProductsWithNoReviewsAsync()
     {
         return await _context.Products
