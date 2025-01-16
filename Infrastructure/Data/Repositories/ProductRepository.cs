@@ -19,7 +19,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         return await _context.Products
             .Include(p => p.ProductBrand)
             .Include(p => p.ProductType)
-            .Where(p => p.ProductBrand.Name == brandName)
+            .Where(p => p.ProductBrand.Name.ToLower() == brandName.ToLower())
             .ToListAsync();
     }
 
@@ -28,7 +28,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         return await _context.Products
             .Include(p => p.ProductBrand)  
             .Include(p => p.ProductType)   
-            .Where(p => p.ProductType.Name == typeName) 
+            .Where(p => p.ProductType.Name.ToLower() == typeName.ToLower()) 
             .ToListAsync();
     }
 
