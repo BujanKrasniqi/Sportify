@@ -19,7 +19,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         return await _context.Products
             .Include(p => p.ProductBrand)
             .Include(p => p.ProductType)
-            .Where(p => p.ProductBrand.Name.ToLower() == brandName.ToLower())
+            .Where(p => p.ProductBrand.Name == brandName)
             .ToListAsync();
     }
 
@@ -28,7 +28,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         return await _context.Products
             .Include(p => p.ProductBrand)  
             .Include(p => p.ProductType)   
-            .Where(p => p.ProductType.Name.ToLower() == typeName.ToLower()) 
+            .Where(p => p.ProductType.Name== typeName) 
             .ToListAsync();
     }
 
@@ -37,6 +37,8 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         return await _context.Products
             .Where(p => p.Name.Contains(productName))
             .ToListAsync();
+
+
     }
 
     //Produktet sipas çmimeve
